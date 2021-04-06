@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "913746993303",
+    "project_id": "lettre-748e5",
+    "storage_bucket": "lettre-748e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913746993303:android:dce32cf054ff6c556ac9d2",
+        "android_client_info": {
+          "package_name": "com.example.lettre"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913746993303-912s2p25nd5ih6bb8nn174ls99s55ksm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-DOffTN6L8RrZmsIsBHOUUFGnDl5t_yY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "913746993303-912s2p25nd5ih6bb8nn174ls99s55ksm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
