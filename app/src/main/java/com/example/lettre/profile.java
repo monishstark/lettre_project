@@ -74,7 +74,6 @@ public class profile extends AppCompatActivity {
         name= findViewById(R.id.name);
         mail= findViewById(R.id.mail);
         dp= findViewById(R.id.dp);
-        id= findViewById(R.id.id);
         country= findViewById(R.id.country);
         Continue= findViewById(R.id.Continue);
         logout= findViewById(R.id.logout);
@@ -84,7 +83,6 @@ public class profile extends AppCompatActivity {
             name.setText(signInAccount.getDisplayName());
             mail.setText(signInAccount.getEmail());
             dp.setImageURI(signInAccount.getPhotoUrl());
-            id.setText(signInAccount.getId());
             String personPhotoUrl = signInAccount.getPhotoUrl().toString();
             Glide.with(getApplicationContext()).load(personPhotoUrl)
                     .thumbnail(0.5f)

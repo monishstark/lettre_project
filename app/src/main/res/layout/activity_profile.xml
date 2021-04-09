@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,121 +12,86 @@
         android:id="@+id/dp"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="176dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
         app:srcCompat="@drawable/user__2_" />
 
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="69dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="154dp"
-        android:layout_marginBottom="25dp"
-        android:text="name"
-        app:layout_constraintBottom_toTopOf="@+id/text10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text10"
-        android:layout_width="69dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginBottom="500dp"
-        android:text="mail"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text1" />
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NAME : "
+            android:padding="10dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="250dp"/>
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="200dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="154dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginBottom="25dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/mail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toEndOf="@+id/text1"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:layout_marginTop="249dp"
+            android:layout_marginHorizontal="130dp"
+            android:text="TextView" />
 
-    <TextView
-        android:id="@+id/mail"
-        android:layout_width="200dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginBottom="500dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text10"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        <TextView
+            android:id="@+id/text10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginTop="300dp"
+            android:layout_marginHorizontal="30dp"
+            android:text="MAIL : " />
 
-    <Button
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="log out"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        <TextView
+            android:id="@+id/mail"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:layout_marginTop="299dp"
+            android:layout_marginHorizontal="130dp"
+            android:text="TextView" />
 
-    <Button
-        android:id="@+id/Continue"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="151dp"
-        android:layout_marginTop="368dp"
-        android:layout_marginEnd="151dp"
-        android:layout_marginBottom="14dp"
-        android:text="CONTINUE"
-        app:layout_constraintBottom_toTopOf="@+id/logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mail"
-        app:layout_constraintVertical_bias="1.0" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginTop="350dp"
+            android:layout_marginHorizontal="30dp"
+            android:text="COUNTRY :" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="69dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="34dp"
-        android:text="country"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text10" />
+        <EditText
+            android:id="@+id/country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Country"
+            android:layout_marginTop="349dp"
+            android:layout_marginHorizontal="130dp"
+            android:inputType="textPersonName" />
 
-    <TextView
-        android:id="@+id/id"
-        android:layout_width="134dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="276dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/Continue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="500dp"
+            android:layout_marginLeft="210dp"
+            android:text="CONTINUE" />
 
-    <EditText
-        android:id="@+id/country"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="90dp"
-        android:layout_marginBottom="289dp"
-        android:ems="10"
-        android:hint="enter country"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/Continue"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="log out"
+            android:layout_marginTop="500dp"
+            android:layout_marginLeft="90dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
