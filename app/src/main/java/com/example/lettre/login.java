@@ -26,15 +26,15 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class login extends AppCompatActivity {
 private final static int RC_SIGN_IN= 123;
     private GoogleSignInClient mGoogleSignInClient;
-    Button verify;
+    public Button verify;
     private FirebaseAuth mAuth;
 
     @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser user= mAuth.getCurrentUser();
-        if (user!=null) {
-            Intent intent = new Intent(getApplicationContext(), profile.class);
+        if (user!=null) {                                                                      //if user is logged skips the profile step
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
         }
     }
