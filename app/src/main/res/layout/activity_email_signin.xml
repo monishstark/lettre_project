@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:alpha="1"
     android:background="@drawable/login_bg"
-    tools:context=".login">
+    tools:context=".email_signin">
 
 
     <LinearLayout
@@ -21,13 +21,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:padding="40dp"
+            android:padding="10dp"
             android:text="Lettre"
             android:textColor="#ffffff"
             android:textSize="60sp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOGIN"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            android:paddingBottom="50dp"
+            android:paddingTop="30dp">
+
+        </TextView>
+
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/user"
+            android:id="@+id/user_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/login_edittext_round"
@@ -58,12 +69,11 @@
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/pass"
+            android:id="@+id/pass_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/login_edittext_round"
             android:ems="10"
-            android:fontFamily="sans-serif-thin"
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
@@ -75,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/login_edittext_round"
                 android:inputType="textPassword"
-                android:hint="Password"
+                android:hint="E-mail"
                 android:fontFamily="sans-serif-thin">
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -95,64 +105,12 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
             android:padding="12dp"
-            android:text="SIGNUP"
-            android:onClick="signuphere"
+            android:text="login"
+            android:onClick="signinhere"
             android:textColor="#000000"
             android:textSize="17sp"
             app:cornerRadius="8dp"
             app:iconTint="#FFFFFF" />
-
-        <TextView
-            android:id="@+id/straight_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Already have an account? Login"
-            android:textColor="#ffffff"
-            android:paddingTop="20dp"
-            android:textSize="15sp"
-            android:clickable="true"
-            android:onClick="gotosignin">
-
-        </TextView>
-
-        <TextView
-            android:id="@+id/or"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="30dp"
-            android:text="OR"
-            android:textColor="#ffffff"
-            android:textSize="15sp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/google_sigin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:clickable="true"
-                app:backgroundTint="@color/white"
-                app:rippleColor="#FFFFFF"
-                app:srcCompat="@drawable/google"
-                app:tint="@null" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fb_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:clickable="true"
-                app:backgroundTint="@color/white"
-                app:srcCompat="@drawable/facebook"
-                app:tint="@null" />
-
-        </LinearLayout>
 
     </LinearLayout>
 
