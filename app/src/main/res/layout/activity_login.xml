@@ -32,9 +32,10 @@
             android:layout_height="wrap_content"
             android:background="@drawable/login_edittext_round"
             android:ems="10"
+            app:boxStrokeColor="@android:color/transparent"
+            app:boxStrokeWidth="0dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:paddingBottom="5dp"
             android:textColorHint="#edeeef"
             app:passwordToggleEnabled="false">
 
@@ -63,8 +64,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/login_edittext_round"
             android:ems="10"
+            app:boxStrokeColor="@android:color/transparent"
+            app:boxStrokeWidth="0dp"
             android:fontFamily="sans-serif-thin"
-            android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             app:passwordToggleEnabled="true"

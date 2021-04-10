@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".profile">
 
     <ImageView
@@ -16,82 +17,147 @@
         android:layout_marginTop="100dp"
         app:srcCompat="@drawable/user__2_" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:padding="15dp">
 
         <TextView
-            android:id="@+id/text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NAME : "
-            android:padding="10dp"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="250dp"/>
+            android:layout_gravity="center"
+            android:text="PROFILE"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            android:padding="20dp">
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:padding="10dp"
-            android:layout_marginTop="249dp"
-            android:layout_marginHorizontal="130dp"
-            android:text="TextView" />
+        </TextView>
 
-        <TextView
-            android:id="@+id/text10"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_marginTop="300dp"
-            android:layout_marginHorizontal="30dp"
-            android:text="MAIL : " />
+            android:orientation="horizontal"
+            android:padding="5dp">
 
-        <TextView
-            android:id="@+id/mail"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:padding="10dp"
-            android:layout_marginTop="299dp"
-            android:layout_marginHorizontal="130dp"
-            android:text="TextView" />
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="NAME         "
+                android:fontFamily="sans-serif-thin"
+                android:textColor="#ffffff"
+                android:background="#2F2F31"
+                android:textSize="15sp"/>
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_marginTop="350dp"
-            android:layout_marginHorizontal="30dp"
-            android:text="COUNTRY :" />
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="#2F2F31"
+                android:padding="10dp"
+                android:text="TextView"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
 
-        <EditText
-            android:id="@+id/country"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Country"
-            android:layout_marginTop="349dp"
-            android:layout_marginHorizontal="130dp"
-            android:inputType="textPersonName" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/Continue"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="500dp"
-            android:layout_marginLeft="210dp"
-            android:text="CONTINUE" />
+            android:padding="5dp">
 
-        <Button
-            android:id="@+id/logout"
+            <TextView
+                android:id="@+id/text10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="MAIL           "
+                android:fontFamily="sans-serif-thin"
+                android:textColor="#ffffff"
+                android:background="#2F2F31"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/mail"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="TextView"
+                android:textColor="#ffffff"
+                android:background="#2F2F31"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="log out"
-            android:layout_marginTop="500dp"
-            android:layout_marginLeft="90dp" />
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="COUNTRY  "
+                android:fontFamily="sans-serif-thin"
+                android:textColor="#ffffff"
+                android:background="#2F2F31"
+                android:textSize="15sp"/>
+
+            <EditText
+                android:id="@+id/country"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Country "
+                android:textSize="15sp"
+                android:paddingLeft="10dp"
+                android:textColor="#ffffff"
+                android:background="#2F2F31"
+                android:inputType="textPersonName" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="30dp">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="log out" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/Continue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CONTINUE" />
+
+        </LinearLayout>
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>
