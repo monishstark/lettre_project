@@ -26,17 +26,29 @@
             android:textColor="#ffffff"
             android:textSize="60sp" />
 
-        <EditText
-            android:id="@+id/username"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/login_edittext_round"
             android:ems="10"
             android:fontFamily="sans-serif-thin"
-            android:hint="Username"
-            android:inputType="textPersonName"
-            android:padding="15dp"
-            android:textColorHint="#edeeef" />
+            android:hint="E-mail"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:textColorHint="#edeeef"
+            app:passwordToggleEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_edittext_round"
+                android:inputType="textEmailAddress">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -45,17 +57,29 @@
 
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/password"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/login_edittext_round"
             android:ems="10"
             android:fontFamily="sans-serif-thin"
             android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="15dp"
-            android:textColorHint="#edeeef" />
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:passwordToggleEnabled="true"
+            android:textColorHint="#edeeef" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_edittext_round"
+                android:inputType="textPassword">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -65,12 +89,13 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/email_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
             android:padding="12dp"
-            android:text="login"
+            android:text="SIGNUP"
+            android:onClick="signuphere"
             android:textColor="#000000"
             android:textSize="17sp"
             app:cornerRadius="8dp"

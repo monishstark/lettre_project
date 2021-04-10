@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,21 +30,23 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import org.w3c.dom.Text;
 
 public class login extends AppCompatActivity {
-private final static int RC_SIGN_IN= 123;
+
+    private final static int RC_SIGN_IN = 123;
     private GoogleSignInClient mGoogleSignInClient;
     public Button verify;
+    TextInputLayout username, password;
     private FirebaseAuth mAuth;
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/art_brewery.ttf");
+        Typeface type = Typeface.createFromAsset(getAssets(), "fonts/art_brewery.ttf");
         TextView login = (TextView) findViewById(R.id.login);
         login.setTypeface(type);
 
-        FirebaseUser user= mAuth.getCurrentUser();
-        if (user!=null) {                                                                      //if user is logged skips the profile step
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {                                                                      //if user is logged skips the profile step
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
         }
@@ -53,7 +57,10 @@ private final static int RC_SIGN_IN= 123;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mAuth= FirebaseAuth.getInstance();
+        username = (TextInputLayout) findViewById(R.id.user);
+        password = (TextInputLayout) findViewById(R.id.pass);
+
+        mAuth = FirebaseAuth.getInstance();
 
         createRequest();
         findViewById(R.id.google_sigin).setOnClickListener(new View.OnClickListener() {
@@ -73,10 +80,12 @@ private final static int RC_SIGN_IN= 123;
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
     }
+
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -90,7 +99,7 @@ private final static int RC_SIGN_IN= 123;
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
-                Toast.makeText(this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -117,4 +126,33 @@ private final static int RC_SIGN_IN= 123;
     }
 
 
+    public void signuphere(View view) {
+
+        String email = username.getEditText().getText().toString();
+        String pass = password.getEditText().getText().toString();
+
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuth.createUserWithEmailAndPassword(email, pass)
+                .addOnCompleteListener(login.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            username.getEditText().setText("");
+                            password.getEditText().setText("");
+                            Toast.makeText(login.this, "Signup successful", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), profile.class);
+                            startActivity(intent);
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            username.getEditText().setText("");
+                            password.getEditText().setText("");
+                            Toast.makeText(login.this, "Signup failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                });
+    }
 }
