@@ -10,6 +10,7 @@ import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -143,6 +144,7 @@ public class login extends AppCompatActivity {
                             password.getEditText().setText("");
                             Toast.makeText(login.this, "Signup successful", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), profile.class);
+                            intent.putExtra("email", mAuth.getCurrentUser().getEmail());
                             startActivity(intent);
 
                         } else {
@@ -155,4 +157,9 @@ public class login extends AppCompatActivity {
 
                 });
     }
+
+    public void gotosignin(View view) {
+        startActivity(new Intent(login.this, email_signin.class));
+    }
+
 }
