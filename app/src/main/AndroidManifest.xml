@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Lettre">
-        <activity android:name=".email_signin"></activity>
+        <activity android:name=".email_signin" />
         <activity android:name=".profile" />
         <activity android:name=".login">
             <intent-filter>
