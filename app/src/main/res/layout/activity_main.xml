@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerView"
+        android:layout_width="393dp"
+        android:layout_height="751dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/downmenu"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@layout/row_conversation" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/downmenu"
         android:layout_width="match_parent"

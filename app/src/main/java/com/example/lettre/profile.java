@@ -83,7 +83,7 @@ public class profile extends AppCompatActivity {
             name.setText(signInAccount.getDisplayName());
             mail.setText(signInAccount.getEmail());
             dp.setImageURI(signInAccount.getPhotoUrl());
-            String personPhotoUrl = signInAccount.getPhotoUrl().toString();
+            personPhotoUrl = signInAccount.getPhotoUrl().toString();
             Glide.with(getApplicationContext()).load(personPhotoUrl)
                     .thumbnail(0.5f)
                     .crossFade()
@@ -93,6 +93,7 @@ public class profile extends AppCompatActivity {
             umail = signInAccount.getEmail();
             uid =  signInAccount.getId();
             ucountry= country.getText().toString();
+
 
 
 
