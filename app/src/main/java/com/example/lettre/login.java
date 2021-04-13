@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,8 +44,14 @@ public class login extends AppCompatActivity {
         super.onStart();
 
         Typeface type = Typeface.createFromAsset(getAssets(), "fonts/art_brewery.ttf");
+        Typeface type2 = Typeface.createFromAsset(getAssets(), "fonts/JosefinSansSemiBold.ttf");
+        Typeface type3 = Typeface.createFromAsset(getAssets(), "fonts/JosefinSansSemiBold.ttf");
         TextView login = (TextView) findViewById(R.id.login);
+        TextView login2 = (TextView) findViewById(R.id.straight_login);
+        TextView login3 = (TextView) findViewById(R.id.straight_login_2);
         login.setTypeface(type);
+        login2.setTypeface(type2);
+        login3.setTypeface(type3);
 
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {                                                                      //if user is logged skips the profile step
@@ -131,6 +138,19 @@ public class login extends AppCompatActivity {
 
         String email = username.getEditText().getText().toString();
         String pass = password.getEditText().getText().toString();
+
+        if(TextUtils.isEmpty(email)){
+            username.setError("Email is required");
+            return;
+        }
+        if(TextUtils.isEmpty(pass)){
+            password.setError("Password is required");
+            return;
+        }
+        if(pass.length() < 6){
+            password.setError("Password must be atleast 6 characters long");
+            return;
+        }
 
         mAuth = FirebaseAuth.getInstance();
 
