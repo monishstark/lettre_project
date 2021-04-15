@@ -104,25 +104,41 @@
             app:cornerRadius="8dp"
             app:iconTint="#FFFFFF" />
 
-        <TextView
-            android:id="@+id/straight_login"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Already have an account? Login"
-            android:textColor="#ffffff"
-            android:paddingTop="20dp"
-            android:textSize="15sp"
-            android:clickable="true"
-            android:onClick="gotosignin">
+            android:layout_height="wrap_content">
 
-        </TextView>
+            <TextView
+                android:id="@+id/straight_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account?"
+                android:textColor="#ffffff"
+                android:paddingTop="20dp"
+                android:textSize="17sp">
+
+            </TextView>
+            <TextView
+                android:id="@+id/straight_login_2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text=" Login"
+                android:textColor="#4897FF"
+                android:paddingTop="20dp"
+                android:textSize="17sp"
+                android:clickable="true"
+                android:onClick="gotosignin">
+
+            </TextView>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/or"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="30dp"
-            android:text="OR"
+            android:text="Or"
             android:textColor="#ffffff"
             android:textSize="15sp" />
 

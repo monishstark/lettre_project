@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -42,10 +43,6 @@ public class profile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-
-
-
         super.onCreate(savedInstanceState);
         binding= ActivityProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -56,6 +53,9 @@ public class profile extends AppCompatActivity {
         reff = database.getReference().child("users");
         dialog = new ProgressDialog(profile.this);
 
+        Typeface type = Typeface.createFromAsset(getAssets(), "fonts/LemonMilk.otf");
+        TextView login = (TextView) findViewById(R.id.profile);
+        login.setTypeface(type);
 
         binding.dp.setOnClickListener(new View.OnClickListener() {
             @Override

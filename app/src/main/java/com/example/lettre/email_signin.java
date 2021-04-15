@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,8 +31,11 @@ public class email_signin extends AppCompatActivity {
         password = (TextInputLayout) findViewById(R.id.pass_login);
 
         Typeface type = Typeface.createFromAsset(getAssets(), "fonts/art_brewery.ttf");
+        Typeface type2 = Typeface.createFromAsset(getAssets(), "fonts/LemonMilk.otf");
         TextView login = (TextView) findViewById(R.id.login);
+        TextView login2 = (TextView) findViewById(R.id.login_text);
         login.setTypeface(type);
+        login2.setTypeface(type2);
 
         mAuth = FirebaseAuth.getInstance();
     }
@@ -40,6 +44,19 @@ public class email_signin extends AppCompatActivity {
 
         String email = username.getEditText().getText().toString();
         String pass = password.getEditText().getText().toString();
+
+        if(TextUtils.isEmpty(email)){
+            username.setError("Email is required");
+            return;
+        }
+        if(TextUtils.isEmpty(pass)){
+            password.setError("Password is required");
+            return;
+        }
+        if(pass.length() < 6){
+            password.setError("Password must be atleast 6 characters long");
+            return;
+        }
 
         mAuth.signInWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(email_signin.this, new OnCompleteListener<AuthResult>() {
