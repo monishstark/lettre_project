@@ -3,11 +3,12 @@ package com.example.lettre;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.lettre.databinding.ActivityMainBinding;
-import com.example.lettre.databinding.ActivityProfileBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         usersAdapters= new UsersAdapters(this,users);
         binding.RecyclerView.setAdapter(usersAdapters);
 
+
         database.getReference().child("users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -48,6 +50,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        binding.downmenu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.addfriend:
+                        Intent intent = new Intent(getApplicationContext(), addfriend.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.profile:
+                        Intent intent1=new Intent(getApplicationContext(),cprofile.class);
+                        startActivity(intent1);
+                        break;
+
+                }
+                return false;
             }
         });
     }

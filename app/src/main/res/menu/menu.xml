@@ -6,7 +6,7 @@
         android:icon="@drawable/home"
         android:title=" " />
     <item
-        android:id="@+id/search"
+        android:id="@+id/addfriend"
         android:icon="@drawable/magnifier__1_"
         android:title=" " />
     <item
