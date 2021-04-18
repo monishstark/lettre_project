@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#000000"
+tools:context=".cprofile">
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="50dp"
+        android:layout_marginTop="80dp"
+        android:layout_gravity="center"
+        android:elevation="10dp">
+
+        <ImageView
+            android:id="@+id/dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/user__2_" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="PROFILE"
+        android:textSize="17sp"
+        android:textColor="#ffffff"
+        android:padding="40dp">
+
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:background="@drawable/login_edittext_round">
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="NAME         "
+            android:fontFamily="sans-serif-thin"
+            android:textColor="#ffffff"
+            android:background="#2F2F31"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="#2F2F31"
+            android:padding="10dp"
+            android:text="TextView"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="5dp">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="@drawable/login_edittext_round">
+
+        <TextView
+            android:id="@+id/text10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="MAIL           "
+            android:fontFamily="sans-serif-thin"
+            android:textColor="#ffffff"
+            android:background="#2F2F31"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/mail"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="TextView"
+            android:textColor="#ffffff"
+            android:background="#2F2F31"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="5dp">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="@drawable/login_edittext_round">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="COUNTRY  "
+            android:fontFamily="sans-serif-thin"
+            android:textColor="#ffffff"
+            android:background="#2F2F31"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/country"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:hint="Country "
+            android:textSize="15sp"
+            android:paddingLeft="10dp"
+            android:textColor="#ffffff"
+            android:background="#2F2F31"
+            android:inputType="textPersonName" />
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/downmenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:menu="@menu/menu" />
+
+</RelativeLayout>
