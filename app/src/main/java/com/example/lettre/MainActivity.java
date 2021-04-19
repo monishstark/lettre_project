@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         database= FirebaseDatabase.getInstance();
         users= new ArrayList<>();
+
         usersAdapters= new UsersAdapters(this,users);
         //binding.RecyclerView.setAdapter(usersAdapters);
 
