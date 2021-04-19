@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     FirebaseDatabase database;
-    ArrayList<user> users;
+    ArrayList<User> users;
     UsersAdapters usersAdapters;
 
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         database= FirebaseDatabase.getInstance();
         users= new ArrayList<>();
         usersAdapters= new UsersAdapters(this,users);
-        binding.RecyclerView.setAdapter(usersAdapters);
+        //binding.RecyclerView.setAdapter(usersAdapters);
 
 
         database.getReference().child("users").addValueEventListener(new ValueEventListener() {
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 users.clear();;
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {                               //gets data from database
-                    user user = snapshot1.getValue(user.class);
+                    User user = snapshot1.getValue(User.class);
                     users.add(user);
                 }
                 usersAdapters.notifyDataSetChanged();
