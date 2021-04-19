@@ -8,8 +8,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerView"
-        android:layout_width="393dp"
-        android:layout_height="751dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/downmenu"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,4 +23,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:menu="@menu/menu" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
