@@ -22,7 +22,7 @@ public class addfriend extends AppCompatActivity {
 
     ActivityAddfriendBinding binding;
     FirebaseDatabase database;
-    ArrayList<user> users;
+    ArrayList<User> users;
     UsersAdapters usersAdapters;
 
     @Override
@@ -43,7 +43,7 @@ public class addfriend extends AppCompatActivity {
                 users.clear();
                 ;
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {                               //gets data from database
-                    user user = snapshot1.getValue(user.class);
+                    User user = snapshot1.getValue(User.class);
                     users.add(user);
                 }
                 usersAdapters.notifyDataSetChanged();
@@ -74,7 +74,7 @@ public class addfriend extends AppCompatActivity {
         });
 
     }
-    public user getRandomElement(List<user> users ){
+    public User getRandomElement(List<User> users ){
         Random random= new Random();
         return users.get(random.nextInt(users.size()));
     }

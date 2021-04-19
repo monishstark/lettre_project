@@ -34,13 +34,24 @@ public class UsersAdapters extends RecyclerView.Adapter<UsersAdapters.UsersViewH
     @NonNull
     @Override
     public UsersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view= LayoutInflater.from(context).inflate(R.layout.row_conversation,parent,false);
+
+        return new UsersViewHolder(view);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull UsersViewHolder holder, int position) {
 
-        final User user = users.get(position);
+        User user= users.get(position);
+        holder.binding.cname.setText(user.getName());
+        //Glide.with(context).load(user.getDp()).into(holder.binding.cdp);
+        Glide.with(context).load(user.getDp())
+                .thumbnail(0.5f)
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.user__2_).into(holder.binding.cdp);
+        holder.binding.ccountry.setText(user.getCountry());
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
