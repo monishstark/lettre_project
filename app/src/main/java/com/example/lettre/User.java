@@ -1,14 +1,14 @@
 package com.example.lettre;
 
-public class user {
+public class User {
 
     private String uid,name,mail,dp,country;
 
-    public user(){
+    public User(){
 
     }
 
-    public user(String uid, String name, String mail, String dp,String country) {
+    public User(String uid, String name, String mail, String dp,String country) {
         this.uid = uid;
         this.name = name;
         this.mail = mail;
