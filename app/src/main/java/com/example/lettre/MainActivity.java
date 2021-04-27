@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         users= new ArrayList<>();
 
         usersAdapters= new UsersAdapters(this,users);
-        binding.RecyclerView.setAdapter(usersAdapters);
+        binding.recyclerview.setAdapter(usersAdapters);
 
 
         database.getReference().child("users").addValueEventListener(new ValueEventListener() {

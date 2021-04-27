@@ -32,7 +32,7 @@ public class addfriend extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         database = FirebaseDatabase.getInstance();
-        users = new ArrayList<>();
+        users = new ArrayList<User>();
         usersAdapters = new UsersAdapters(this, users);
         binding.results.setAdapter(usersAdapters);
 

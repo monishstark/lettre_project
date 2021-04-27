@@ -55,13 +55,6 @@
                         android:textColor="#ffffff"/>
 
                     <ImageView
-                        android:id="@+id/attachment"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_marginEnd="12dp"
-                        app:srcCompat="@android:drawable/ic_input_add" />
-
-                    <ImageView
                         android:id="@+id/sendBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

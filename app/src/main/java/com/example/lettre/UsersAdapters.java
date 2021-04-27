@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class UsersAdapters extends RecyclerView.Adapter<UsersAdapters.UsersViewHolder> {
@@ -44,13 +45,40 @@ public class UsersAdapters extends RecyclerView.Adapter<UsersAdapters.UsersViewH
     public void onBindViewHolder(@NonNull UsersViewHolder holder, int position) {
 
         User user= users.get(position);
+
+        String senderUid = FirebaseAuth.getInstance().getUid();
+
+        String senderRoom = senderUid + user.getUid();
+
+        FirebaseDatabase.getInstance().getReference()
+                .child("chats")
+                .child(senderRoom)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            String lastMsg = snapshot.child("lastMsg").getValue(String.class);
+                            long time = snapshot.child("lastMsgTime").getValue(long.class);
+
+                            holder.binding.recent.setText(lastMsg);
+                        }
+                        else{
+                            holder.binding.recent.setText("Tap to Chat");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
         holder.binding.cname.setText(user.getName());
         //Glide.with(context).load(user.getDp()).into(holder.binding.cdp);
         Glide.with(context).load(user.getDp())
                 .thumbnail(0.5f)
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.user__2_).into(holder.binding.cdp);
-        holder.binding.ccountry.setText(user.getCountry());
+        holder.binding.recent.setText(user.getCountry());
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

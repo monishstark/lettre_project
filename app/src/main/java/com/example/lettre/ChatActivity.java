@@ -65,6 +65,8 @@ public class ChatActivity extends AppCompatActivity {
                         }
 
                         adaptor.notifyDataSetChanged();
+                        if(messages.size()!=0)
+                            binding.recyclerView.smoothScrollToPosition(messages.size()-1);
                     }
 
                     @Override
@@ -82,23 +84,33 @@ public class ChatActivity extends AppCompatActivity {
                 Message message = new Message(messageTxt, senderUid, date.getTime());
                 binding.messagebox.setText("");
 
+                String randomKey = database.getReference().push().getKey();
+
+                HashMap<String,Object> lastMsgObj = new HashMap<>();
+                lastMsgObj.put("lastMsg",message.getMessage());
+                lastMsgObj.put("lastMsgTime",date.getTime());
+
+                database.getReference().child("chats").child(senderRoom).updateChildren(lastMsgObj);
+                database.getReference().child("chats").child(receiverRoom).updateChildren(lastMsgObj);
+
                 database.getReference().child("chats")
                         .child(senderRoom)
                         .child("messages")
-                        .push()
+                        .child(randomKey)
                         .setValue(message).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         database.getReference().child("chats")
                                 .child(receiverRoom)
                                 .child("messages")
-                                .push()
+                                .child(randomKey)
                                 .setValue(message).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
 
                             }
                         });
+
 
                     }
                 });
