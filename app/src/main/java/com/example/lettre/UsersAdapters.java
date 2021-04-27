@@ -97,6 +97,8 @@ public class UsersAdapters extends RecyclerView.Adapter<UsersAdapters.UsersViewH
         return users.size();
     }
 
+
+
     public class UsersViewHolder extends RecyclerView.ViewHolder{
 
         RowConversationBinding binding;
