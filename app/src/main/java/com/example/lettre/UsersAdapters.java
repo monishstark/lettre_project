@@ -45,6 +45,17 @@ public class UsersAdapters extends RecyclerView.Adapter<UsersAdapters.UsersViewH
     public void onBindViewHolder(@NonNull UsersViewHolder holder, int position) {
 
         User user= users.get(position);
+        holder.binding.cname.setText(user.getName());
+        //Glide.with(context).load(user.getDp()).into(holder.binding.cdp);
+        Glide.with(context).load(user.getDp())
+                .thumbnail(0.5f)
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.user__2_).into(holder.binding.cdp);
+        /*holder.binding.ccountry.setText(user.getCountry());*/
+
+
+
+
 
         String senderUid = FirebaseAuth.getInstance().getUid();
 

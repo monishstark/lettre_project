@@ -99,7 +99,7 @@ public class profile extends AppCompatActivity {
             uname = signInAccount.getDisplayName();
             umail = signInAccount.getEmail();
             uid =  signInAccount.getId();
-            ucountry= country.getText().toString();
+
 
 
 
@@ -140,7 +140,7 @@ public class profile extends AppCompatActivity {
 
                     dialog.setMessage("LOADING.....");
                     dialog.show();
-                    User User = new User(uid,uname,umail,personPhotoUrl,ucountry);
+                    User User = new User(uid,uname,umail,personPhotoUrl,binding.country.getText().toString());
                     reff.push().setValue(User);
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
