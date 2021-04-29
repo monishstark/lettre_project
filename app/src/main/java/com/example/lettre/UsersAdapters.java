@@ -61,7 +61,7 @@ public class UsersAdapters extends RecyclerView.Adapter<UsersAdapters.UsersViewH
 
         String senderRoom = senderUid + user.getUid();
 
-        FirebaseDatabase.getInstance().getReference()
+        /*FirebaseDatabase.getInstance().getReference()
                 .child("chats")
                 .child(senderRoom)
                 .addValueEventListener(new ValueEventListener() {
@@ -82,7 +82,7 @@ public class UsersAdapters extends RecyclerView.Adapter<UsersAdapters.UsersViewH
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
-                });
+                });*/
         holder.binding.cname.setText(user.getName());
         //Glide.with(context).load(user.getDp()).into(holder.binding.cdp);
         Glide.with(context).load(user.getDp())

@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 
@@ -18,55 +17,48 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 public class ChatActivity extends AppCompatActivity {
 
+
     ActivityChatBinding binding;
-    MessagesAdaptor adaptor;
+    MessagesAdapter adapter;
     ArrayList<Message> messages;
-
+    String senderRoom, reciverRoom;
     FirebaseDatabase database;
-    String senderRoom;
-    String receiverRoom;
 
-
-    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityChatBinding.inflate(getLayoutInflater());
+        binding= ActivityChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        messages = new ArrayList<>();
-        adaptor = new MessagesAdaptor(this, messages);
+        messages= new ArrayList<>();
+        adapter= new MessagesAdapter(this,messages);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        binding.recyclerView.setAdapter(adaptor);
+        binding.recyclerView.setAdapter(adapter);
 
-        String name = getIntent().getStringExtra("name");
-        String receiverUid = getIntent().getStringExtra("uid");
-        String senderUid = FirebaseAuth.getInstance().getUid();
 
-        senderRoom = senderUid + receiverUid;
-        receiverRoom = receiverUid + senderUid;
+        String name= getIntent().getStringExtra("name");
+        String recevierUid= getIntent().getStringExtra("uid");
+        String senderUid= FirebaseAuth.getInstance().getUid();
 
-        database = FirebaseDatabase.getInstance();
+        senderRoom= senderUid + recevierUid;
+        reciverRoom= recevierUid + senderUid;
+
+        database= FirebaseDatabase.getInstance();
 
         database.getReference().child("chats")
-                .child(senderRoom)
-                .child("messages")
+                .child(senderRoom).child("messages")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         messages.clear();
-                        for(DataSnapshot snapshot1 : snapshot.getChildren()) {
-                            Message message = snapshot.getValue(Message.class);
+                        for (DataSnapshot snapshot1:snapshot.getChildren()){
+                            Message message= snapshot1.getValue(Message.class);
                             messages.add(message);
                         }
-
-                        adaptor.notifyDataSetChanged();
-                        if(messages.size()!=0)
-                            binding.recyclerView.smoothScrollToPosition(messages.size()-1);
+                        adapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -75,35 +67,28 @@ public class ChatActivity extends AppCompatActivity {
                     }
                 });
 
-        binding.sendBtn.setOnClickListener(new View.OnClickListener() {
+        binding.sendbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String messageTxt = binding.messagebox.getText().toString();
+                String messageTxt= binding.messageBox.getText().toString();
 
-                Date date = new Date();
-                Message message = new Message(messageTxt, senderUid, date.getTime());
-                binding.messagebox.setText("");
+                Date date =new Date();
+                Message message= new Message(messageTxt,senderUid,date.getTime());
+                binding.messageBox.setText("");
 
-                String randomKey = database.getReference().push().getKey();
-
-                HashMap<String,Object> lastMsgObj = new HashMap<>();
-                lastMsgObj.put("lastMsg",message.getMessage());
-                lastMsgObj.put("lastMsgTime",date.getTime());
-
-                database.getReference().child("chats").child(senderRoom).updateChildren(lastMsgObj);
-                database.getReference().child("chats").child(receiverRoom).updateChildren(lastMsgObj);
 
                 database.getReference().child("chats")
                         .child(senderRoom)
                         .child("messages")
-                        .child(randomKey)
+                        .push()
                         .setValue(message).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+
                         database.getReference().child("chats")
-                                .child(receiverRoom)
+                                .child(reciverRoom)
                                 .child("messages")
-                                .child(randomKey)
+                                .push()
                                 .setValue(message).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
@@ -111,19 +96,19 @@ public class ChatActivity extends AppCompatActivity {
                             }
                         });
 
-
                     }
                 });
             }
         });
 
-        getSupportActionBar().setTitle(name); //name
+        getSupportActionBar().setTitle(name);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true); //back button
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         finish();
         return super.onSupportNavigateUp();
-    } // to go back
+    }
 }
