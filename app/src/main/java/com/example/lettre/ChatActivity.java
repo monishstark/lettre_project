@@ -7,7 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.os.Bundle;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.lettre.databinding.ActivityChatBinding;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +30,7 @@ public class ChatActivity extends AppCompatActivity {
     ArrayList<Message> messages;
     String senderRoom, receiverRoom;
     FirebaseDatabase database;
+    String senderUid,receiverUid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +44,18 @@ public class ChatActivity extends AppCompatActivity {
         binding.recyclerView.setAdapter(adapter);
 
 
+
+
         String name= getIntent().getStringExtra("name");
-        String receiverUid= getIntent().getStringExtra("uid");
-        String senderUid= FirebaseAuth.getInstance().getUid();
+        receiverUid= getIntent().getStringExtra("uid");
+
+        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
+        senderUid = signInAccount.getId();
 
         senderRoom= senderUid + receiverUid;
         receiverRoom= receiverUid + senderUid;
+
+
 
         database= FirebaseDatabase.getInstance();
 

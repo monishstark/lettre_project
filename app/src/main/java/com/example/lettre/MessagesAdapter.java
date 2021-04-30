@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lettre.databinding.ItemReceiveBinding;
 import com.example.lettre.databinding.ItemSentBinding;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -46,7 +48,8 @@ public class MessagesAdapter extends RecyclerView.Adapter{
     public int getItemViewType(int position) {
 
         Message message= messages.get(position);
-        if(FirebaseAuth.getInstance().getUid().equals(message.getSenderId())) {
+        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(context);
+        if(signInAccount.getId().equals(message.getSenderId())) {
             return ITEM_SENT;
         }
         else {

@@ -14,6 +14,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.lettre.User;
 import com.example.lettre.databinding.RowConversationBinding;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,9 +45,10 @@ public class UsersAdapters extends RecyclerView.Adapter<UsersAdapters.UsersViewH
 
     @Override
     public void onBindViewHolder(@NonNull UsersViewHolder holder, int position) {
+        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(context);
 
         User user= users.get(position);
-        holder.binding.cname.setText(user.getName());
+        holder.binding.cname.setText(signInAccount.getDisplayName());
         //Glide.with(context).load(user.getDp()).into(holder.binding.cdp);
         Glide.with(context).load(user.getDp())
                 .thumbnail(0.5f)
@@ -57,11 +60,11 @@ public class UsersAdapters extends RecyclerView.Adapter<UsersAdapters.UsersViewH
 
 
 
-        String senderUid = FirebaseAuth.getInstance().getUid();
+        /*String senderUid = FirebaseAuth.getInstance().getUid();
 
         String senderRoom = senderUid + user.getUid();
 
-        /*FirebaseDatabase.getInstance().getReference()
+        FirebaseDatabase.getInstance().getReference()
                 .child("chats")
                 .child(senderRoom)
                 .addValueEventListener(new ValueEventListener() {
@@ -95,9 +98,11 @@ public class UsersAdapters extends RecyclerView.Adapter<UsersAdapters.UsersViewH
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(context);
                 Intent intent = new Intent(context, ChatActivity.class);
-                intent.putExtra("name", user.getName());
-                intent.putExtra("uid", user.getUid());
+                intent.putExtra("name", signInAccount.getDisplayName());
+
+                intent.putExtra("uid",user.getUid());
                 context.startActivity(intent);
             }
         });
