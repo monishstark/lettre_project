@@ -14,12 +14,14 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
-public class MessagesAdapter extends RecyclerView.Adapter {
+public class MessagesAdapter extends RecyclerView.Adapter{
 
     Context context;
     ArrayList<Message> messages;
-    final int ITEM_SENT= 1;
-    final int ITEM_RECEVIVE=2;
+    final int ITEM_SENT= 0;
+    final int ITEM_RECEIVE= 1;
+
+
     public MessagesAdapter(Context context,ArrayList<Message> messages){
         this.context= context;
         this.messages= messages;
@@ -44,10 +46,12 @@ public class MessagesAdapter extends RecyclerView.Adapter {
     public int getItemViewType(int position) {
 
         Message message= messages.get(position);
-        if(FirebaseAuth.getInstance().getUid().equals(message.getSenderId()))
+        if(FirebaseAuth.getInstance().getUid().equals(message.getSenderId())) {
             return ITEM_SENT;
-        else
-            return ITEM_RECEVIVE;
+        }
+        else {
+            return ITEM_RECEIVE;
+        }
 
     }
 
@@ -70,6 +74,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
+
         return messages.size();
     }
 

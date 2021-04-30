@@ -24,7 +24,7 @@ public class ChatActivity extends AppCompatActivity {
     ActivityChatBinding binding;
     MessagesAdapter adapter;
     ArrayList<Message> messages;
-    String senderRoom, reciverRoom;
+    String senderRoom, receiverRoom;
     FirebaseDatabase database;
 
     @Override
@@ -40,11 +40,11 @@ public class ChatActivity extends AppCompatActivity {
 
 
         String name= getIntent().getStringExtra("name");
-        String recevierUid= getIntent().getStringExtra("uid");
+        String receiverUid= getIntent().getStringExtra("uid");
         String senderUid= FirebaseAuth.getInstance().getUid();
 
-        senderRoom= senderUid + recevierUid;
-        reciverRoom= recevierUid + senderUid;
+        senderRoom= senderUid + receiverUid;
+        receiverRoom= receiverUid + senderUid;
 
         database= FirebaseDatabase.getInstance();
 
@@ -86,7 +86,7 @@ public class ChatActivity extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
 
                         database.getReference().child("chats")
-                                .child(reciverRoom)
+                                .child(receiverRoom)
                                 .child("messages")
                                 .push()
                                 .setValue(message).addOnSuccessListener(new OnSuccessListener<Void>() {
