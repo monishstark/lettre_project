@@ -60,7 +60,7 @@ public class UsersAdapters extends RecyclerView.Adapter<UsersAdapters.UsersViewH
 
 
 
-        /*String senderUid = FirebaseAuth.getInstance().getUid();
+        String senderUid = signInAccount.getId();
 
         String senderRoom = senderUid + user.getUid();
 
@@ -85,22 +85,22 @@ public class UsersAdapters extends RecyclerView.Adapter<UsersAdapters.UsersViewH
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
-                });*/
+                });
         holder.binding.cname.setText(user.getName());
         //Glide.with(context).load(user.getDp()).into(holder.binding.cdp);
         Glide.with(context).load(user.getDp())
                 .thumbnail(0.5f)
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.user__2_).into(holder.binding.cdp);
-        holder.binding.recent.setText(user.getCountry());
+        /*holder.binding.recent.setText(user.getCountry());*/
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(context);
+                /*GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(context);*/
                 Intent intent = new Intent(context, ChatActivity.class);
-                intent.putExtra("name", signInAccount.getDisplayName());
+                intent.putExtra("name", user.getName());
 
                 intent.putExtra("uid",user.getUid());
                 context.startActivity(intent);
