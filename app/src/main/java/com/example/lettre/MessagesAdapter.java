@@ -69,13 +69,14 @@ public class MessagesAdapter extends RecyclerView.Adapter{
             viewHolder.binding.senderName.setText(signInAccount.getDisplayName());
 
 
+
         }
         else {
 
             ReceiverViewHolder viewHolder= (ReceiverViewHolder)holder;
             viewHolder.binding.message.setText(message.getMessage());
             viewHolder.binding.senderName1.setText(message.getReceiverName());
-            /*viewHolder.binding.receiverTime.setText((int) message.getTimestamp());*/
+
         }
 
     }

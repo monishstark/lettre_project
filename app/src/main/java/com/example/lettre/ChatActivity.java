@@ -20,7 +20,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -31,6 +33,7 @@ public class ChatActivity extends AppCompatActivity {
     String senderRoom, receiverRoom;
     FirebaseDatabase database;
     String senderUid,receiverUid;
+    int min,hour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,12 @@ public class ChatActivity extends AppCompatActivity {
         adapter= new MessagesAdapter(this,messages);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(adapter);
+
+        GregorianCalendar date= new GregorianCalendar();
+        min= date.get(Calendar.MINUTE);
+        hour= date.get(Calendar.HOUR);
+
+        String TIME= (hour+':'+""+min);
 
 
 
@@ -83,8 +92,8 @@ public class ChatActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String messageTxt= binding.messageBox.getText().toString();
 
-                Date date =new Date();
-                Message message= new Message(messageTxt,senderUid,date.getTime(),signInAccount.getDisplayName());
+
+                Message message= new Message(messageTxt,senderUid,TIME,signInAccount.getDisplayName());
                 binding.messageBox.setText("");
 
 

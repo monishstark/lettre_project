@@ -2,16 +2,16 @@ package com.example.lettre;
 
 public class Message {
     private String messageId, message,senderId,receiverName;
-    private long timestamp;
+    private String time;
 
 
     public Message() {
     }
 
-    public Message(String message, String senderId, long timestamp,String receiverName) {
+    public Message(String message, String senderId, String time,String receiverName) {
         this.message = message;
         this.senderId = senderId;
-        this.timestamp = timestamp;
+        this.time = time;
         this.receiverName = receiverName;
 
     }
@@ -40,12 +40,12 @@ public class Message {
         this.senderId = senderId;
     }
 
-    public long getTimestamp() {
-        return timestamp;
+    public String getTime() {
+        return time;
     }
 
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getReceiverName() {

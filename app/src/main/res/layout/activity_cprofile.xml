@@ -136,17 +136,16 @@ tools:context=".cprofile">
             android:background="#2F2F31"
             android:textSize="15sp"/>
 
-        <EditText
+        <TextView
             android:id="@+id/country"
             android:layout_width="300dp"
             android:layout_height="match_parent"
+            android:background="#2F2F31"
             android:ems="10"
-            android:hint="Country "
-            android:textSize="15sp"
+            android:inputType="textPersonName"
             android:paddingLeft="10dp"
             android:textColor="#ffffff"
-            android:background="#2F2F31"
-            android:inputType="textPersonName" />
+            android:textSize="15sp" />
 
     </LinearLayout>
 

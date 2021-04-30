@@ -6,22 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".addfriend">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="67dp"
-        android:layout_marginEnd="151dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/results"
-        android:layout_width="395dp"
-        android:layout_height="630dp"
-        app:layout_constraintBottom_toTopOf="@+id/downmenu"
+        android:layout_width="410dp"
+        android:layout_height="728dp"
+        app:layout_constraintBottom_toBottomOf="@+id/downmenu"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/row_conversation">
 
     </androidx.recyclerview.widget.RecyclerView>

@@ -32,7 +32,7 @@ public class addfriend extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         database = FirebaseDatabase.getInstance();
-        users = new ArrayList<User>();
+        users = new ArrayList<>();
         usersAdapters = new UsersAdapters(this, users);
         binding.results.setAdapter(usersAdapters);
 
@@ -41,7 +41,7 @@ public class addfriend extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 users.clear();
-                ;
+
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {                               //gets data from database
                     User user = snapshot1.getValue(User.class);
                     users.add(user);
@@ -73,10 +73,6 @@ public class addfriend extends AppCompatActivity {
             }
         });
 
-    }
-    public User getRandomElement(List<User> users ){
-        Random random= new Random();
-        return users.get(random.nextInt(users.size()));
     }
 
 

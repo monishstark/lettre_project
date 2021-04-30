@@ -32,12 +32,4 @@
         app:layout_constraintEnd_toEndOf="@+id/message"
         app:srcCompat="@drawable/stamp" />
 
-    <EditText
-        android:id="@+id/receiver_time"
-        android:layout_width="82dp"
-        android:layout_height="16dp"
-        android:ems="10"
-        android:inputType="time"
-        app:layout_constraintEnd_toEndOf="@+id/message"
-        app:layout_constraintTop_toBottomOf="@+id/message" />
 </androidx.constraintlayout.widget.ConstraintLayout>
