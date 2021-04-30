@@ -1,17 +1,19 @@
 package com.example.lettre;
 
 public class Message {
-    private String messageId, message,senderId;
+    private String messageId, message,senderId,receiverName;
     private long timestamp;
 
 
     public Message() {
     }
 
-    public Message(String message, String senderId, long timestamp) {
+    public Message(String message, String senderId, long timestamp,String receiverName) {
         this.message = message;
         this.senderId = senderId;
         this.timestamp = timestamp;
+        this.receiverName = receiverName;
+
     }
 
     public String getMessageId() {
@@ -44,5 +46,13 @@ public class Message {
 
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getReceiverName() {
+        return receiverName;
+    }
+
+    public void setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
     }
 }

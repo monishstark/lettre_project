@@ -84,7 +84,7 @@ public class ChatActivity extends AppCompatActivity {
                 String messageTxt= binding.messageBox.getText().toString();
 
                 Date date =new Date();
-                Message message= new Message(messageTxt,senderUid,date.getTime());
+                Message message= new Message(messageTxt,senderUid,date.getTime(),signInAccount.getDisplayName());
                 binding.messageBox.setText("");
 
 

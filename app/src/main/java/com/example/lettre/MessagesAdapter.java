@@ -24,6 +24,7 @@ public class MessagesAdapter extends RecyclerView.Adapter{
     final int ITEM_RECEIVE= 1;
 
 
+
     public MessagesAdapter(Context context,ArrayList<Message> messages){
         this.context= context;
         this.messages= messages;
@@ -61,9 +62,11 @@ public class MessagesAdapter extends RecyclerView.Adapter{
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Message message= messages.get(position);
+        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(context);
         if (holder.getClass()== SentViewHolder.class){
             SentViewHolder viewHolder= (SentViewHolder)holder;
             viewHolder.binding.message.setText(message.getMessage());
+            viewHolder.binding.senderName.setText(signInAccount.getDisplayName());
 
 
         }
@@ -71,6 +74,8 @@ public class MessagesAdapter extends RecyclerView.Adapter{
 
             ReceiverViewHolder viewHolder= (ReceiverViewHolder)holder;
             viewHolder.binding.message.setText(message.getMessage());
+            viewHolder.binding.senderName1.setText(message.getReceiverName());
+            /*viewHolder.binding.receiverTime.setText((int) message.getTimestamp());*/
         }
 
     }

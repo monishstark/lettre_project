@@ -48,19 +48,19 @@ public class UsersAdapters extends RecyclerView.Adapter<UsersAdapters.UsersViewH
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(context);
 
         User user= users.get(position);
-        holder.binding.cname.setText(signInAccount.getDisplayName());
+        /*holder.binding.cname.setText(signInAccount.getDisplayName());
         //Glide.with(context).load(user.getDp()).into(holder.binding.cdp);
         Glide.with(context).load(user.getDp())
                 .thumbnail(0.5f)
                 .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.user__2_).into(holder.binding.cdp);
+                .diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.user__2_).into(holder.binding.cdp);*/
         /*holder.binding.ccountry.setText(user.getCountry());*/
 
 
 
 
 
-        String senderUid = signInAccount.getId();
+        /*String senderUid = signInAccount.getId();
 
         String senderRoom = senderUid + user.getUid();
 
@@ -85,14 +85,14 @@ public class UsersAdapters extends RecyclerView.Adapter<UsersAdapters.UsersViewH
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
-                });
+                });*/
         holder.binding.cname.setText(user.getName());
         //Glide.with(context).load(user.getDp()).into(holder.binding.cdp);
         Glide.with(context).load(user.getDp())
                 .thumbnail(0.5f)
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.user__2_).into(holder.binding.cdp);
-        /*holder.binding.recent.setText(user.getCountry());*/
+        holder.binding.recent.setText(user.getCountry());
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
