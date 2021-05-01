@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="40dp"
@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="enter text"
+                android:hint="Write your letter here..."
                 android:inputType="textPersonName" />
 
         </LinearLayout>
@@ -58,5 +58,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/send"
         tools:ignore="MissingConstraints" />
+    
 
 </androidx.constraintlayout.widget.ConstraintLayout>
