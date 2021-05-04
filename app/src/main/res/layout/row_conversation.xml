@@ -42,16 +42,6 @@
         android:paddingLeft="20dp"
         android:layout_toEndOf="@id/dp_circle"/>
 
-    <TextView
-        android:id="@+id/time"
-        android:layout_width="wrap_content"
-        android:layout_height="15dp"
-        android:fontFamily="sans-serif-thin"
-        android:text="TextView"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:textSize="10sp" />
-
     <View
         android:id="@+id/dummy_view"
         android:layout_width="match_parent"
