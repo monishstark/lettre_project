@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,6 +46,7 @@ public class cprofile extends AppCompatActivity{
     FirebaseStorage storage;
     DatabaseReference reff;
     ProgressDialog dialog;
+    ImageButton home, search, profile;
 
 
     @Override
@@ -53,9 +55,9 @@ public class cprofile extends AppCompatActivity{
         binding = ActivityCprofileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
-
-
+        home = findViewById(R.id.home_button);
+        search = findViewById(R.id.search_button);
+        profile = findViewById(R.id.profile_button);
 
         binding.dp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,9 +69,6 @@ public class cprofile extends AppCompatActivity{
 
             }
         });
-
-
-
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
         if (signInAccount != null) {
@@ -84,26 +83,25 @@ public class cprofile extends AppCompatActivity{
                     .into(binding.dp);
             binding.country.setText("india");
 
-
-
         }
-        binding.downmenu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.addfriend:
-                        Intent intent = new Intent(getApplicationContext(), addfriend.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.home:
-                        Intent intent1=new Intent(getApplicationContext(),MainActivity.class);
-                        startActivity(intent1);
-                        break;
 
-                }
-                return false;
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), addfriend.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override

@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.example.lettre.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database;
     ArrayList<User> users;
     UsersAdapters usersAdapters;
+    ImageButton home, search, profile;
 
 
 
@@ -29,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding= ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        home = findViewById(R.id.home_button);
+        search = findViewById(R.id.search_button);
+        profile = findViewById(R.id.profile_button);
 
         database= FirebaseDatabase.getInstance();
         users= new ArrayList<>();
@@ -54,23 +61,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        binding.downmenu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.addfriend:
-                        Intent intent = new Intent(getApplicationContext(), addfriend.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.profile:
-                        Intent intent1=new Intent(getApplicationContext(),cprofile.class);
-                        startActivity(intent1);
-                        break;
 
-                }
-                return false;
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), addfriend.class);
+                startActivity(intent);
             }
         });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), cprofile.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 }

@@ -9,7 +9,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/results"
         android:layout_width="410dp"
-        android:layout_height="728dp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="@+id/downmenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,13 +18,45 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/downmenu"
+    <RelativeLayout
+        android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:elevation="45dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu" />
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#ffc40c"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/results">
+
+        <ImageButton
+            android:id="@+id/home_button"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/home">
+
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/search_button"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/magnifier__1_">
+
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/profile_button"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/user__3_">
+
+        </ImageButton>
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
