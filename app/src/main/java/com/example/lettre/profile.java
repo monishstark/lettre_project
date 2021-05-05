@@ -4,10 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
+import android.location.Location;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +27,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.lettre.databinding.ActivityProfileBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,6 +52,7 @@ public class profile extends AppCompatActivity {
     FirebaseStorage storage;
     DatabaseReference reff;
     ProgressDialog dialog;
+    private FusedLocationProviderClient fusedLocationProviderClient;
     int exist=0;
 
     @Override
@@ -99,6 +107,31 @@ public class profile extends AppCompatActivity {
             uname = signInAccount.getDisplayName();
             umail = signInAccount.getEmail();
             uid =  signInAccount.getId();
+            fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(this);
+            /*if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+                if (getApplicationContext().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
+
+                    fusedLocationProviderClient.getLastLocation()
+                            .addOnSuccessListener(new OnSuccessListener<Location>() {
+                                @Override
+                                public void onSuccess(Location location) {
+                                    if (location!= null){
+
+                                        double lat= location.getLatitude();
+                                        double longt=location.getLongitude();
+
+                                    }
+                                }
+                            });
+
+                }
+                else{
+                    requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
+
+                }
+            }*/
+
+
 
 
 
@@ -138,12 +171,40 @@ public class profile extends AppCompatActivity {
 
             public void onClick(View v) {
 
-                    dialog.setMessage("LOADING.....");
+
+                if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+                    if (getApplicationContext().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
+
+                        fusedLocationProviderClient.getLastLocation()
+                                .addOnSuccessListener(new OnSuccessListener<Location>() {
+                                    @Override
+                                    public void onSuccess(Location location) {
+                                        if (location!= null){
+
+                                            dialog.setMessage("LOADING.....");
+                                            dialog.show();
+                                            User User = new User(uid,uname,umail,personPhotoUrl,binding.country.getText().toString(),location.getLatitude(),location.getLongitude());
+                                            reff.push().setValue(User);
+                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                            startActivity(intent);
+
+                                        }
+                                    }
+                                });
+
+                    }
+                    else{
+                        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
+
+                    }
+                }
+
+                    /*dialog.setMessage("LOADING.....");
                     dialog.show();
-                    User User = new User(uid,uname,umail,personPhotoUrl,binding.country.getText().toString());
+                    User User = new User(uid,uname,umail,personPhotoUrl,binding.country.getText().toString(),lat,longt);
                     reff.push().setValue(User);
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
+                    startActivity(intent);*/
 
 
 

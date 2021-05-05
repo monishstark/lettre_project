@@ -3,17 +3,20 @@ package com.example.lettre;
 public class User {
 
     private String uid,name,mail,dp,country;
+    private  double lan,longt;
 
     public User(){
 
     }
 
-    public User(String uid, String name, String mail, String dp,String country) {
+    public User(String uid, String name, String mail, String dp,String country, double lan,double longt) {
         this.uid = uid;
         this.name = name;
         this.mail = mail;
         this.dp = dp;
         this.country = country;
+        this.lan=lan;
+        this.longt=longt;
     }
 
     public String getUid() {
@@ -54,5 +57,21 @@ public class User {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public double getLan() {
+        return lan;
+    }
+
+    public void setLan(double lan) {
+        this.lan = lan;
+    }
+
+    public double getLongt() {
+        return longt;
+    }
+
+    public void setLongt(double longt) {
+        this.longt = longt;
     }
 }

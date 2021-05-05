@@ -25,7 +25,7 @@ public class addfriend extends AppCompatActivity {
     ActivityAddfriendBinding binding;
     FirebaseDatabase database;
     ArrayList<User> users;
-    UsersAdapters usersAdapters;
+    FriendsAdapter friendsAdapter;
     ImageButton home, search, profile;
 
     @Override
@@ -36,8 +36,8 @@ public class addfriend extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         users = new ArrayList<>();
-        usersAdapters = new UsersAdapters(this, users);
-        binding.results.setAdapter(usersAdapters);
+        friendsAdapter = new FriendsAdapter(this, users);
+        binding.results.setAdapter(friendsAdapter);
 
         home = findViewById(R.id.home_button);
         search = findViewById(R.id.search_button);
@@ -52,7 +52,7 @@ public class addfriend extends AppCompatActivity {
                     User user = snapshot1.getValue(User.class);
                     users.add(user);
                 }
-                usersAdapters.notifyDataSetChanged();
+                friendsAdapter.notifyDataSetChanged();
             }
 
             @Override

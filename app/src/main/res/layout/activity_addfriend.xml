@@ -10,11 +10,13 @@
         android:id="@+id/results"
         android:layout_width="410dp"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="@+id/downmenu"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/row_conversation">
+        tools:listitem="@layout/friends_list"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+
 
     </androidx.recyclerview.widget.RecyclerView>
 

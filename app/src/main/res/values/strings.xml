@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name" translatable="false">Lettre</string>
+    <string name="title_activity_frlocation">Map</string>
 </resources>
