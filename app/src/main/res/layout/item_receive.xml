@@ -14,6 +14,7 @@
         android:padding="10dp"
         android:background="@drawable/receive_drawable"
         android:text="TextView"
+        android:fontFamily="cursive"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

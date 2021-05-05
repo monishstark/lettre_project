@@ -52,9 +52,6 @@ public class ChatActivity extends AppCompatActivity {
 
         String TIME= (hour+':'+""+min);
 
-
-
-
         String name= getIntent().getStringExtra("name");
         receiverUid= getIntent().getStringExtra("uid");
 

@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="6dp">
+    android:padding="6dp"
+    android:background="@color/black">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/dp_circle"
@@ -31,7 +32,8 @@
         android:paddingLeft="20dp"
         android:text="TextView"
         android:textSize="17sp"
-        android:textStyle="bold" />
+        android:textColor="#fffff0"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:id="@+id/recent"
@@ -40,6 +42,8 @@
         android:layout_marginTop="28dp"
         android:text="TextView"
         android:paddingLeft="20dp"
+        android:textColor="#fffff0"
+        android:fontFamily="sans-serif-thin"
         android:layout_toEndOf="@id/dp_circle"/>
 
     <View
@@ -53,7 +57,7 @@
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#050505"
+        android:background="#28282B"
         android:layout_below="@id/dummy_view">
 
     </View>
