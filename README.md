@@ -1,73 +1,89 @@
- private EditText phoneNumberEditText;
-    private Button loginButton;
-    
-    private FirebaseAuth mAuth;
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        
-        mAuth = FirebaseAuth.getInstance();
+    <LinearLayout
+        android:id="@+id/phone_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-        phoneNumberEditText = findViewById(R.id.phone_number_edit_text);
-        loginButton = findViewById(R.id.login_button);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String phoneNumber = phoneNumberEditText.getText().toString().trim();
-                if (phoneNumber.isEmpty() || phoneNumber.length() < 10) {
-                    phoneNumberEditText.setError("Enter a valid phone number");
-                    phoneNumberEditText.requestFocus();
-                    return;
-                }
+        <EditText
+            android:id="@+id/phone_number_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/colorSecondaryText"
+            android:textSize="16sp" />
 
-                PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                        phoneNumber,
-                        60,
-                        TimeUnit.SECONDS,
-                        LoginActivity.this,
-                        new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-                            @Override
-                            public void onVerificationCompleted(PhoneAuthCredential credential) {
-                                signInWithPhoneAuthCredential(credential);
-                            }
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDivider" />
 
-                            @Override
-                            public void onVerificationFailed(FirebaseException e) {
-                                Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                            }
+    </LinearLayout>
 
-                            @Override
-                            public void onCodeSent(String verificationId, PhoneAuthProvider.ForceResendingToken token) {
-                                String code = getCodeFromUser();
-                                PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
-                                signInWithPhoneAuthCredential(credential);
-                            }
-                        });
-            }
-        });
-    }
+    <LinearLayout
+        android:id="@+id/otp_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/phone_layout"
+        android:layout_marginTop="24dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
 
-    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // User is signed in successfully
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-    }
+        <EditText
+            android:id="@+id/otp_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="OTP"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/colorSecondaryText"
+            android:textSize="16sp" />
 
-    private String getCodeFromUser() {
-        // Prompt the user to enter the verification code received via SMS
-        // and return the code entered by the user
-    }
-}
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDivider" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/phone_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/resend_otp_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/otp_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Resend OTP"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+</RelativeLayout>
